@@ -1,0 +1,22 @@
+{
+  "name": "profile-generator",
+  "version": "1.0.0",
+  "description": "Will generate pdf file from github profile",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabepettus/Profile-Generator.git"
+  },
+  "author": "Gabe Pettus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabepettus/Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/gabepettus/Profile-Generator#readme",
+  "dependencies": {
+    "axios": "^0.19.0"
+  }
+}
