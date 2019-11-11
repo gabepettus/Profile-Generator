@@ -68,6 +68,7 @@ inquirer.prompt([
   }
 
   const config = { headers: { accept: "application/json" } };
+  // call axios to get starred and portfolio data back
   axios.all ([
     axios.get(`https://api.github.com/users/${userid}`, config),
     axios.get(`https://api.github.com/users/${userid}/starred`, config)
@@ -99,6 +100,7 @@ function buildGitResults(res,stars) {
   return(results);
 }
 
+// generates PDF without the navbar and background color (although it does color the cards)
 function generatePdf(html) {
   // function to use electron-html-to to generate pdf from html
   // console.log("generatePdf",html);
@@ -111,8 +113,6 @@ function generatePdf(html) {
       return console.error(err);
     }
   
-    // console.log(result.numberOfPages);
-    // console.log(result.logs);
     result.stream.pipe(fs.createWriteStream(`portfolio_${userName}.pdf`));
     conversion.kill(); // shuts down the stream once the file is finished wrting since we are not going to append to it
     console.log(`Your pdf file ./portfolio_${userName}.pdf is available in your current directory`);
@@ -120,6 +120,8 @@ function generatePdf(html) {
 
 }
 
+//funciton not called. This is an attempt to use a different package for pdf conversion. 
+// it only generates the image and the header, but the background color
 function generatePdf2(html) {
   let pdf = require('html-pdf');
   let options = { format: 'letter', orientation: "portrait" };
@@ -129,6 +131,7 @@ function generatePdf2(html) {
   // pdf.create(html, options).toFile('./businesscard.pdf', function(err, res) {
   pdf.create(html, options).toFile(`./portfolio_${userName}.pdf`, function(err, res) {
     if (err) return console.log(err);
+    // console.log(res);
     console.log(`Your pdf file ./portfolio_${userName}.pdf is available in your current directory`);
   });
 }
