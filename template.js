@@ -1,3 +1,4 @@
+// wraps html body allowing for insertion of variables
 module.exports = res => `
 <!DOCTYPE html>
 <html lang="en-us">
@@ -11,6 +12,17 @@ module.exports = res => `
 
   <!-- Bootstrap CDN -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/6cbff65fb8.js" crossorigin="anonymous"></script>
+  <link href="/css/all.css" rel="stylesheet">
+
+  <!-- set colors -->
+  <style>
+    body { 
+          background-color: ${res.color_bkgd}; 
+          -webkit-print-color-adjust:exact;
+         }
+    .card { background-color: ${res.color_card}; }
+  </style>
 
 </head>
 
@@ -29,6 +41,19 @@ module.exports = res => `
         <div class="row">
           <div class="col-md-3">
             <img src="${res.imageLink}" alt="GITHUB avatar for ${res.userName}" class="img-thumbnail">
+<!--                <span>
+      <a href="" download>
+        <i class='far fa-file-pdf fa-2x' alt='download resume'></i>
+        <i class="far fa-address-card"></i>
+      </a>
+      <a href="">
+        <i class='fab fa-github fa-2x' alt='link to github'></i>
+      </a>
+      <a href="">
+        <i class='fab fa-linkedin fa-2x' alt='link to linkedin'></i>
+      </a>
+    </span>
+    -->
           </div>
           <div class="col-md-9">
             <p>
@@ -70,14 +95,6 @@ module.exports = res => `
       </div>
     </div>
   </div>
-
-  <!-- jQuery CDN -->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> -->
-
-  <!-- Bootstrap JavaScript CDN -->
-  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
 </body>
 </html>
 `
